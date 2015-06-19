@@ -12,7 +12,7 @@ INPUT_FILE: while (my $input_file = shift) {
     binmode($in);
     my $buffer;
     while ( (read ($in, $buffer, 10)) != 0 ) {
-        # Expext 10 bytes header:
+        # Expect 10 bytes header:
         # 8 bytes length as ASCII number
         # 2 bytes type indicator ASCII 00 or 01
         if (length($buffer) != 10) {
