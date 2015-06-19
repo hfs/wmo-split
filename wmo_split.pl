@@ -48,10 +48,10 @@ INPUT_FILE: while (my $input_file = shift) {
             my $pos = tell($in) - 10;
             my $pos_info = "";
             if ($pos >= 0) {
-                $pos_info = ", byte $pos_info";
+                $pos_info = ", byte $pos";
             }
             my $hex = join(' ', unpack('(H2)*', $messageheader));
-            warn("Broken message header in file '$input_file'$pos_info: Expected x0D x0A x0A nnn(nn)? x0D, but got '$hex'");
+            warn("Broken message header in file '$input_file'$pos_info: Expected x01 x0D x0D x0A nnn(nn)? x0D, but got '$hex'");
             close($in);
             next INPUT_FILE;
         }
